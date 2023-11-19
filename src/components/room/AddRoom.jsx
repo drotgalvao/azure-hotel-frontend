@@ -1,5 +1,7 @@
 import React from "react";
 import { addRoom } from "../utils/ApiFunctions";
+import RoomTypeSelector from "../common/RoomTypeSelector";
+import { useState } from "react";
 
 const AddRoom = () => {
   const [newRoom, setNewRoom] = useState({
@@ -76,14 +78,12 @@ const AddRoom = () => {
                 <label htmlFor="roomType" className="form-label">
                   Tipo de quarto
                 </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="roomType"
-                  name="roomType"
-                  value={newRoom.roomType}
-                  onChange={handleRoomInputChange}
-                />
+                <div>
+                  <RoomTypeSelector
+                    handleRoomInputChange={handleRoomInputChange}
+                    newRoom={newRoom}
+                  />
+                </div>
               </div>
               <div className="mb-3">
                 <label htmlFor="roomPrice" className="form-label">

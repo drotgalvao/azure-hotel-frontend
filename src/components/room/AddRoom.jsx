@@ -20,7 +20,7 @@ const AddRoom = () => {
 
     if (name === "roomPrice") {
       if (!isNaN(value)) {
-        value.parseInt(value);
+        value = value;
       } else {
         value = "";
       }
@@ -64,6 +64,10 @@ const AddRoom = () => {
     } catch (error) {
       setErrorMessage(error.message);
     }
+    setTimeout(() => {
+      setSuccessMessage("");
+      setErrorMessage("");
+    }, 3000);
   };
 
   return (
@@ -72,6 +76,14 @@ const AddRoom = () => {
         <div className="row justify-content-center">
           <div className="col-md-8 col-lg-6">
             <h2 className="mt-5 mb-2">Adicionar novo quarto</h2>
+            {successMessage && (
+              <div className="alert alert-success fade show">
+                {successMessage}
+              </div>
+            )}
+            {errorMessage && (
+              <div className="alert alert-danger fade show">{errorMessage}</div>
+            )}
 
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
@@ -120,7 +132,9 @@ const AddRoom = () => {
                 )}
               </div>
               <div className="d-grid d-md-flex mt-2">
-                <button type="submit" className="btn btn-outline-primary ml-5">Salvar Quarto</button>
+                <button type="submit" className="btn btn-outline-primary ml-5">
+                  Salvar Quarto
+                </button>
               </div>
             </form>
           </div>

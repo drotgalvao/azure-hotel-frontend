@@ -22,10 +22,21 @@ export async function addRoom(photo, roomType, roomPrice) {
 // this function get all types of database
 export async function getRoomTypes() {
     try {
-        const response = await api.get("/rooms/room-types");
+        const response = await api.get("/rooms/room/types");
         return response.data;
     } catch (error) {
         throw new Error("Erro ao buscar tipos de quartos");
         
     }
+}
+
+
+// this function gets all rooms from database
+export async function getAllRooms() {
+  try {
+    const response = await api.get("/rooms/all-rooms");
+    return response.data;
+  } catch (error) {
+    throw new Error("Erro ao buscar quartos");
+  }
 }
